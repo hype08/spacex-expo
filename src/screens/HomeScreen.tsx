@@ -1,17 +1,34 @@
 import * as React from 'react';
 import styled from 'styled-components/native';
-import { ScrollView, SafeAreaView } from 'react-native';
-import { Card } from '../components/Card';
+import gql from 'graphql-tag';
+import { SafeAreaView } from 'react-native';
+
+const GET_LAUNCHES = gql`
+  query launchList($after: String) {
+    launches(after: $after) {
+      cursor
+      hasMore
+      launches {
+        id
+        isBooked
+        rocket {
+          id
+          name
+        }
+        mission {
+          name
+          missionPatch
+        }
+      }
+    }
+  }
+`;
 
 export const HomeScreen: React.FC = () => {
   return (
     <Container>
       <SafeArea>
-        <Scroll showsVerticalScrollIndicator={false}>
-          {cards.map(index => (
-            <Card key={index} />
-          ))}
-        </Scroll>
+        <StyledText>Text</StyledText>
       </SafeArea>
     </Container>
   );
@@ -19,7 +36,7 @@ export const HomeScreen: React.FC = () => {
 
 const Container = styled.View`
   flex: 1;
-  background-color: #f0f3f5;
+  background-color: ${({ theme }): string => theme.colors.background};
   align-items: center;
   justify-content: center;
   overflow: hidden;
@@ -29,8 +46,6 @@ const SafeArea = styled(SafeAreaView)`
   flex: 1;
 `;
 
-const Scroll = styled(ScrollView)`
-  height: 100%;
+const StyledText = styled.Text`
+  color: ${({ theme }): string => theme.colors.accent};
 `;
-
-const cards = [1, 2, 3, 4, 5, 6, 7];
