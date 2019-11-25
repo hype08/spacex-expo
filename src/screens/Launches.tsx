@@ -2,6 +2,9 @@ import * as React from 'react';
 import styled from 'styled-components/native';
 import gql from 'graphql-tag';
 import { SafeAreaView } from 'react-native';
+import { useQuery } from '@apollo/react-hooks';
+import Button from '../components/Button';
+import { LaunchTile } from '../components/LaunchTile';
 
 const GET_LAUNCHES = gql`
   query launchList($after: String) {
@@ -24,28 +27,26 @@ const GET_LAUNCHES = gql`
   }
 `;
 
-export const HomeScreen: React.FC = () => {
+export const Launches: React.FC = () => {
+  const { error } = useQuery(GET_LAUNCHES);
+  if (error) return <p>ERROR</p>;
+
   return (
-    <Container>
-      <SafeArea>
-        <StyledText>Text</StyledText>
-      </SafeArea>
-    </Container>
+    <SafeArea>
+      <Container>
+        <LaunchTile />
+        <Button text="load more" />
+      </Container>
+    </SafeArea>
   );
 };
-
-const Container = styled.View`
-  flex: 1;
-  background-color: ${({ theme }): string => theme.colors.background};
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-`;
 
 const SafeArea = styled(SafeAreaView)`
   flex: 1;
 `;
 
-const StyledText = styled.Text`
-  color: ${({ theme }): string => theme.colors.accent};
+const Container = styled.View`
+  height: 100%;
+  background-color: ${({ theme }): string => theme.colors.background};
+  align-items: center;
 `;

@@ -5,7 +5,7 @@ import { View, Text } from 'react-native';
 import { ThemeProvider } from 'styled-components/native';
 import { client } from './apollo';
 import { Route, Router, Switch } from './routes/index';
-import { HomeScreen } from './screens/HomeScreen';
+import { Launches } from './screens/Launches';
 import { DetailsScreen } from './screens/DetailsScreen';
 import { BottomNav } from './components/BottomNav';
 import '@expo/match-media';
@@ -30,7 +30,7 @@ const App: React.FC = () => {
         </View>
         <Router>
           <Switch>
-            <Route exact path="/" component={HomeScreen} />
+            <Route exact path="/" component={Launches} />
             <Route exact path="/Details" component={DetailsScreen} />
           </Switch>
           <BottomNav />
