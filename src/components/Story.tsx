@@ -12,6 +12,7 @@ export const Story: React.FC = () => {
 const Container = styled.View`
   height: 600px;
   width: 300px;
+
   background-color: ${({ theme }): string => theme.colors.grey};
   justify-content: center;
   border-radius: 8px;

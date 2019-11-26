@@ -1,5 +1,6 @@
 module.exports = {
   parser: '@typescript-eslint/parser',  // Specifies the ESLint parser
+  'plugins': ['@typescript-eslint', 'react-native', 'eslint-plugin-react-hooks'],
   extends: [
     'universe/native',
     'plugin:react/recommended',  // Uses the recommended rules from @eslint-plugin-react
