@@ -40,6 +40,6 @@ const Icon = styled.View`
   padding: 25px;
   border-radius: 12px;
   background-color: #f0f3f5;
-  margin: 10px auto;
+  margin: 8px auto 25px auto;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 `;

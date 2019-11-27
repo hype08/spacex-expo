@@ -1,13 +1,10 @@
 import * as React from 'react';
 import styled from 'styled-components/native';
-import LinkList from './LinkList';
 
 export const Story: React.FC = () => {
   return (
     <Container>
-      <Content>
-        <LinkList />
-      </Content>
+      <Content />
     </Container>
   );
 };
@@ -15,7 +12,8 @@ export const Story: React.FC = () => {
 const Container = styled.View`
   height: 600px;
   width: 300px;
-  background-color: #ffffff;
+
+  background-color: ${({ theme }): string => theme.colors.grey};
   justify-content: center;
   border-radius: 8px;
   margin: 38px;
